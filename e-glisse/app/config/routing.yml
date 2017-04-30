@@ -1,0 +1,28 @@
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+#    defaults: { _controller: AdminBundle:Article:list }
+
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+register:
+    path: /register
+    defaults: { _controller: UserBundle:Security:register }
+
+pannier:
+    path: /pannier
+    defaults: { _controller: UserBundle:Pannier:display }
+
+addPannier:
+    path: /addElement
+    defaults: { _controller: UserBundle:Pannier:addElement }

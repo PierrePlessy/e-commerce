@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AdminBundle:Indend:seeOders{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Indend:seeOders page</h1>
+
+    {% set cpt = 0 %}
+    {% for pan in panniers %}
+        {% if cpt%3 == 0 %}
+            <div class="row">
+        {% endif %}
+        <div class="col-md-4 portfolio-item article">
+            <h3>
+                <a href="#">{{ pan.buyer }}</a>
+            </h3>
+            {% for ind in indent %}
+                <p>{{ ind['idProduct'] }}</p>
+            {% endfor %}
+            <a href="{{ path("deleteArticle", {'id':art.id}) }}" class="btn btn-danger">
+                Supprimer
+            </a>
+        </div>
+        {% if cpt%3 == 2 %}
+            </div>
+        {% endif %}
+
+        {% set cpt = cpt + 1 %}
+
+    {% endfor %}
+
+    {% if cpt%3 != 2 %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AdminBundle:Article:edit{% endblock %}
+
+{% block body %}
+
+    {#{{ form(editArticle) }}#}
+
+    <table class="table table-stripped">
+        <tr>
+            <th>Nom</th>
+            <th>Valeur actuelle</th>
+            <th>Modifier</th>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(editArticle.name) }}</td>
+            <td>{{ article.name }}</td>
+            <td>
+                {{ form_widget(editArticle.name) }}
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(editArticle.category) }}</td>
+            <td>{{ article.category }}</td>
+            <td>
+                {{ form_widget(editArticle.category) }}
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(editArticle.price) }}</td>
+            <td>{{ article.price }}</td>
+            <td>
+                {{ form_widget(editArticle.price) }}
+            </td>
+        </tr>
+
+        <tr>
+            <td>{{ form_label(editArticle.picture) }}</td>
+            <td>{{ article.picture }}</td>
+            <td>
+                {{ form_widget(editArticle.picture) }}
+            </td>
+        </tr>
+        <tr>
+            <td>{{ form_label(editArticle.length) }}</td>
+            <td>{{ article.length }}</td>
+            <td>
+                {{ form_widget(editArticle.length) }}
+            </td>
+        </tr>
+        <tr>
+            <td>{{ form_label(editArticle.width) }}</td>
+            <td>{{ article.width }}</td>
+            <td>
+                {{ form_widget(editArticle.width) }}
+            </td>
+        </tr>
+        <tr>
+            <td>{{ form_label(editArticle.thickness) }}</td>
+            <td>{{ article.thickness }}</td>
+            <td>
+                {{ form_widget(editArticle.thickness) }}
+            </td>
+        </tr>
+        <tr>
+            <td>{{ form_label(editArticle.description) }}</td>
+            <td>{{ article.description }}</td>
+            <td>
+                {{ form_widget(editArticle.description) }}
+            </td>
+        </tr>
+    </table>
+
+    {#{{ form_rest(editArticle) }}#}
+{% endblock %}

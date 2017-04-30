@@ -1,0 +1,45 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}UserBundle:Pannier:display{% endblock %}
+
+{% block body %}
+    <h1>Votre Panier</h1>
+
+    <table class="table table-stripped">
+        <tr>
+            <th>Nom</th>
+            <th>Quantité</th>
+            <th>Prix/Unité</th>
+            <th>Prix Total</th>
+            <th>Supprimer</th>
+        </tr>
+
+        {% set cpt = 0 %}
+        {% for art in articles %}
+            <tr>
+                <td>{{ session['idProduct'][cpt]  }}</td>
+                <td>{{ session['number'][cpt] }}</td>
+                <td>{{ session['price'][cpt] }}</td>
+                <td>{{ session['price'][cpt] * session['number'][cpt] }}</td>
+                <td>
+                    <a href="{{ path("deleteElement", {'id':session['idProduct'][cpt]}) }}" class="btn btn-danger">
+                        Supprimer
+                    </a>
+                </td>
+            </tr>
+        {% set cpt = cpt + 1 %}
+        {% endfor %}
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ total }}</td>
+        </tr>
+
+    </table>
+    <a href="{{ path("validate") }}" class="btn btn-danger">
+        Valider
+    </a>
+
+{% endblock %}

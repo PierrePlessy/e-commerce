@@ -1,0 +1,43 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Shopping{% endblock %}
+
+{% block body %}
+    <h1>Listes des articles en Vente : </h1>
+
+
+    {% set cpt = 0 %}
+
+    {% for art in articles %}
+        {% if cpt%3 == 0 %}
+            <div class="row">
+        {% endif %}
+        <div class="col-md-4 portfolio-item article">
+            <a href="#">
+                <img class="img-responsive" src="{{ art.picture }}" alt="">
+            </a>
+            <h3>
+                <a href="#">{{ art.name }}</a> <p class="price">{{ art.price }} €</p>
+            </h3>
+            <h5>
+                {{ art.length }} x {{ art.width }} x {{ art.thickness }}
+            </h5>
+            <p>{{ art.description }}</p>
+            <a href="{{ path("addElement", {'id':art.id}) }}" class="btn btn-danger">
+                Ajouter au panier
+            </a>
+
+        </div>
+        {% if cpt%3 == 2 %}
+            </div>
+        {% endif %}
+
+        {% set cpt = cpt + 1 %}
+
+    {% endfor %}
+
+    {% if cpt%3 != 2 %}
+        </div>
+    {% endif %}
+
+{% endblock %}
